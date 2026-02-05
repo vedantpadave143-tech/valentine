@@ -66,19 +66,18 @@
 
 <div class="card" id="card">
     <h1>Will you be my Valentine? ❤️</h1>
-    <button id="yesBtn" onclick="yesClicked()">Yes</button>
-    <button id="noBtn" onclick="moveNo(event)">No</button>
+    <button id="yesBtn">Yes</button>
+    <button id="noBtn" onclick="noClicked()">No</button>
 </div>
 
 <script>
-const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
 const card = document.getElementById("card");
 
-function moveNo(e) {
-    e.preventDefault(); // NO will never be clicked
-
+// YES button moves (runs away)
+function moveYes() {
     const cardRect = card.getBoundingClientRect();
-    const btnRect = noBtn.getBoundingClientRect();
+    const btnRect = yesBtn.getBoundingClientRect();
 
     const maxX = cardRect.width - btnRect.width - 10;
     const maxY = cardRect.height - btnRect.height - 10;
@@ -86,17 +85,21 @@ function moveNo(e) {
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+    yesBtn.style.left = x + "px";
+    yesBtn.style.top = y + "px";
 }
 
-function yesClicked() {
+// Move YES when user tries to click it
+yesBtn.addEventListener("mouseenter", moveYes);   // desktop
+yesBtn.addEventListener("touchstart", moveYes);   // mobile
+
+// NO button is clickable → WhatsApp
+function noClicked() {
     const phoneNumber = "919967854584"; // ✅ YOUR NUMBER
     const message = encodeURIComponent(
-        "I said YES 💖🥰 Happy Valentine’s Day!"
+        "I pressed NO 💔 but you are still special 😅"
     );
 
-    // Opens WhatsApp with message typed
     window.location.href =
         "https://wa.me/" + phoneNumber + "?text=" + message;
 }

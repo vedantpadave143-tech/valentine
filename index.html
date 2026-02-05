@@ -75,8 +75,7 @@ const noBtn = document.getElementById("noBtn");
 const card = document.getElementById("card");
 
 function moveNo(e) {
-    // stop NO from being clicked
-    e.preventDefault();
+    e.preventDefault(); // NO will never be clicked
 
     const cardRect = card.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
@@ -92,13 +91,12 @@ function moveNo(e) {
 }
 
 function yesClicked() {
-    // 🔴 PUT YOUR NUMBER HERE (no +, no spaces)
-    const phoneNumber = "919967854584";
-
+    const phoneNumber = "919967854584"; // ✅ YOUR NUMBER
     const message = encodeURIComponent(
-        "I said YES 💖 Happy Valentine’s Day 😘"
+        "I said YES 💖🥰 Happy Valentine’s Day!"
     );
 
+    // Opens WhatsApp with message typed
     window.location.href =
         "https://wa.me/" + phoneNumber + "?text=" + message;
 }
@@ -106,4 +104,3 @@ function yesClicked() {
 
 </body>
 </html>
-

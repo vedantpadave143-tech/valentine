@@ -41,6 +41,7 @@
         border-radius: 30px;
         cursor: pointer;
         position: absolute;
+        z-index: 2;
     }
 
     #yesBtn {
@@ -66,14 +67,17 @@
 <div class="card" id="card">
     <h1>Will you be my Valentine? ❤️</h1>
     <button id="yesBtn" onclick="yesClicked()">Yes</button>
-    <button id="noBtn">No</button>
+    <button id="noBtn" onclick="moveNo(event)">No</button>
 </div>
 
 <script>
 const noBtn = document.getElementById("noBtn");
 const card = document.getElementById("card");
 
-function moveNo() {
+function moveNo(e) {
+    // stop NO from being clicked
+    e.preventDefault();
+
     const cardRect = card.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
 
@@ -87,18 +91,18 @@ function moveNo() {
     noBtn.style.top = y + "px";
 }
 
-noBtn.addEventListener("mouseenter", moveNo);
-noBtn.addEventListener("touchstart", moveNo);
-
 function yesClicked() {
-    alert("❤️ Yay! You pressed YES ❤️");
+    // 🔴 PUT YOUR NUMBER HERE (no +, no spaces)
+    const phoneNumber = "919876543210";
 
-    // 🔔 WhatsApp redirect (CHANGE NUMBER BELOW)
-    const phoneNumber = "91XXXXXXXXXX"; // your number with country code
-    const message = encodeURIComponent("I said YES 💖 Happy Valentine’s Day 😘");
-    window.location.href = `https://wa.me/${phoneNumber}?text=${message}`;
+    const message = encodeURIComponent(
+        "I said YES 💖 Happy Valentine’s Day 😘"
+    );
+
+    window.location.href =
+        "https://wa.me/" + phoneNumber + "?text=" + message;
 }
 </script>
 
 </body>
-</html> 
+</html>

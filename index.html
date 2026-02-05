@@ -17,7 +17,7 @@
     }
 
     .card {
-        position: relative; /* IMPORTANT */
+        position: relative;
         width: 90%;
         max-width: 360px;
         height: 260px;
@@ -87,45 +87,18 @@ function moveNo() {
     noBtn.style.top = y + "px";
 }
 
-noBtn.addEventListener("mouseenter", moveNo); // desktop
-noBtn.addEventListener("touchstart", moveNo); // mobile
+noBtn.addEventListener("mouseenter", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
 
 function yesClicked() {
     alert("❤️ Yay! You pressed YES ❤️");
 
-    document.body.innerHTML = `
-        <div style="
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(135deg,#ff758c,#ff7eb3);
-            color:white;
-            font-size:28px;
-            text-align:center;
-            padding:20px;
-        ">
-            💖 Thank you for being my Valentine 💖
-        </div>
-    `;
-}
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(135deg,#ff758c,#ff7eb3);
-            color:white;
-            font-size:28px;
-            text-align:center;
-            padding:20px;
-        ">
-            ❤️ Yay! You said YES ❤️<br>
-            Happy Valentine’s Day 💕
-        </div>
-    `;
+    // 🔔 WhatsApp redirect (CHANGE NUMBER BELOW)
+    const phoneNumber = "91XXXXXXXXXX"; // your number with country code
+    const message = encodeURIComponent("I said YES 💖 Happy Valentine’s Day 😘");
+    window.location.href = `https://wa.me/${phoneNumber}?text=${message}`;
 }
 </script>
 
 </body>
-</html>
-
+</html> 

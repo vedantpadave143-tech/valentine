@@ -76,7 +76,7 @@ input {
 
 <div class="card" id="step1">
     <h1>Do you want a rose? 🌹</h1>
-    <button class="yes" onclick="startLove()">Yes</button>
+    <button class="yes" onclick="handleYes()">Yes</button>
     <button class="no" onclick="alert('No is not an option 😄❤️')">No</button>
 </div>
 
@@ -95,11 +95,19 @@ input {
 </div>
 
 <script>
-function startLove() {
-    alert("Please click with more love ❤️");
-    alert("First give me 5 kisses 💋💋💋💋💋");
-    document.getElementById("step1").classList.add("hidden");
-    document.getElementById("step2").classList.remove("hidden");
+let yesCount = 0;
+
+function handleYes() {
+    yesCount++;
+
+    if (yesCount === 1) {
+        alert("Please click with more love ❤️");
+    } 
+    else if (yesCount === 2) {
+        alert("First give me 5 kisses 💋💋💋💋💋");
+        document.getElementById("step1").classList.add("hidden");
+        document.getElementById("step2").classList.remove("hidden");
+    }
 }
 
 function checkKisses() {
